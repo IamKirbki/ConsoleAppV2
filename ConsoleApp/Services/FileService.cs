@@ -6,7 +6,7 @@ namespace ConsoleApp.Services
     {
         public void Create(string path)
         {
-            File.AppendText(path);
+            File.Create(path).Close();
         }
 
         public void Delete(string path)
@@ -29,7 +29,7 @@ namespace ConsoleApp.Services
         {
             if (Exists(path))
                 File.WriteAllText(path, content);
-            else 
+            else
                 throw new FileNotFoundException("File not found", path);
         }
 

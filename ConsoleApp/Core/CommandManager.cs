@@ -18,6 +18,14 @@ namespace ConsoleApp.Core
             _commands[command.Name] = command;
         }
 
+        public void RegisterCommands(IEnumerable<ICommand> commands)
+        {
+            foreach (var command in commands)
+            {
+                RegisterCommand(command);
+            }
+        }
+
         public bool TryExecute(string input)
         {
             if (_commands.TryGetValue(input, out ICommand command))

@@ -11,6 +11,7 @@ namespace ConsoleApp.Core
         public App(ConsoleUI consoleUI)
         {
             _ui = consoleUI;
+            _ui.SetupCancelling();
             Run();
         }
 
@@ -18,24 +19,28 @@ namespace ConsoleApp.Core
         {
             CommandManager _commandManager = new(_ui);
 
-            _commandManager.RegisterCommand(new ListCommand());
-            _commandManager.RegisterCommand(new HelpCommand());
-            _commandManager.RegisterCommand(new CreateFileCommand());
-            _commandManager.RegisterCommand(new ReverseCommand());
-            _commandManager.RegisterCommand(new DateCommand());
-            _commandManager.RegisterCommand(new ClearCommand());
+            _commandManager.RegisterCommands(
+                [
+                    new ListCommand(),
+                    new HelpCommand(),
+                    new CreateFileCommand(),
+                    new ReverseCommand(),
+                    new DateCommand(),
+                    new ClearCommand()
+                ]
+            );
 
-            bool isActive = true;
+            bool _active = true;
 
-            while (isActive)
+            while (_active)
             {
-                string input = _ui.Read();
-                input = input.Trim();
-                if (input != EXIT_COMMAND)
+                string _input = _ui.Read().Trim();
+                if (_input != EXIT_COMMAND || _ui.IsCancelling)
                 {
                     try
                     {
-                        _commandManager.TryExecute(input);
+                        _commandManager.TryExecute(_input);
+                        _ui.ResetCancelling();
                     }
                     catch (Exception ex)
                     {
@@ -44,7 +49,7 @@ namespace ConsoleApp.Core
                 }
                 else
                 {
-                    isActive = false;
+                     _active = false;
                 }
             }
         }

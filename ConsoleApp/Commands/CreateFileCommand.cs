@@ -11,50 +11,71 @@ namespace ConsoleApp.Commands
         public void Execute(ConsoleUI _ui)
         {
             DirectoryService _dirService = new(Directory.GetCurrentDirectory());
-            _ui.Write(_dirService.CurrPath);
-            _dirService.GoUp();
-            _dirService.GoUp();
-            _dirService.GoUp();
-            _dirService.GoInto("data");
 
+            PrepareDirectory(_dirService, _ui);
+            PromptAndCreateFile(_dirService, _ui);
+
+            _ui.Write("\n Exited! \n");
+        }
+
+        private void PrepareDirectory(DirectoryService dirService, ConsoleUI ui)
+        {
+            ui.Write(dirService.CurrPath);
+            dirService.GoUp();
+            dirService.GoUp();
+            dirService.GoUp();
+            dirService.GoInto("data");
+        }
+
+        private void PromptAndCreateFile(DirectoryService dirService, ConsoleUI ui)
+        {
             bool isNameValid = false;
             while (!isNameValid)
             {
-                _ui.Write("Please insert a file name:");
+                ui.Write("Please insert a file name:");
 
-                string FileName = _ui.Read();
-                if (FileName == "")
+                string fileName = ui.Read();
+                if (string.IsNullOrWhiteSpace(fileName))
                 {
-                    _ui.Write("A file name must be given");
+                    ui.Write("A file name must be given");
+                    continue;
                 }
+                else if (fileName.IndexOfAny(Path.GetInvalidFileNameChars()) >= 0)
+                {
+                    ui.Write("The file name contains invalid characters");
+                    continue;
+                }
+
+                FileService _fileService = new();
+
+                string filePath = Path.Combine(dirService.CurrPath, fileName + ".txt");
+                _fileService.Create(filePath);
+
+                if (_fileService.Exists(filePath))
+                {
+                    ui.Write("File '" + fileName + "' created succesfully \n Press ctrl + c twice to save and exit \n \n Contents: ");
+
+                    EnterWriteLoop(_fileService, filePath, ui);
+
+                    isNameValid = true;
+                }
+            }
+        }
+
+        private void EnterWriteLoop(FileService fileService, string filePath, ConsoleUI ui)
+        {
+            bool isWriting = true;
+            ui.ResetCancelling();
+
+            while (isWriting)
+            {
+                string oldContent = fileService.Read(filePath);
+                string content = ui.Read();
+
+                if (!ui.IsCancelling)
+                    fileService.Write(filePath, oldContent + "\n" + content);
                 else
-                {
-                    FileService _fileService = new();
-
-                    string FilePath = _dirService.CurrPath + "/" + FileName + ".txt";
-                    _fileService.Create(FilePath);
-
-                    if (_fileService.Exists(FilePath))
-                    {
-                        _ui.Write("File '" + FileName + "' created succesfully \n Press ctrl + c twice to save and exit \n \n Contents: ");
-
-                        bool isWriting = true;
-                        _ui.SetupCancelling();
-
-                        while (isWriting) {
-                            string oldContent = _fileService.Read(FilePath);
-                            string content = _ui.Read();
-
-                            if (!_ui.IsCancelling)
-                                _fileService.Write(FilePath, oldContent + "\n" + content);
-                            else
-                                isWriting = false;
-                        }
-
-                        _ui.ResetCancelling();
-                        isNameValid = true;
-                    }
-                }
+                    isWriting = false;
             }
         }
     }
