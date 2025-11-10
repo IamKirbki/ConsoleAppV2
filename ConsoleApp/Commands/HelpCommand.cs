@@ -14,7 +14,7 @@ namespace ConsoleApp.Commands
                 "createFile: Create a .txt file \n" +
                 "date: Get the current date in format: dd-mm-yyyy \n" +
                 "reverse: Reverse an input string \n" +
-                "help: This menu :D \n" +
+                "help: This menu :D \n" 
             );
         }
     }
