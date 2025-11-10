@@ -15,7 +15,7 @@ namespace ConsoleApp.Commands
             PrepareDirectory(_dirService, _ui);
             PromptAndCreateFile(_dirService, _ui);
 
-            _ui.Write("\n Exited! \n");
+            _ui.Write("\nExited! \n");
         }
 
         private void PrepareDirectory(DirectoryService dirService, ConsoleUI ui)
@@ -53,7 +53,7 @@ namespace ConsoleApp.Commands
 
                 if (_fileService.Exists(filePath))
                 {
-                    ui.Write("File '" + fileName + "' created succesfully \n Press ctrl + c twice to save and exit \n \n Contents: ");
+                    ui.Write("File '" + fileName + "' created succesfully \nPress ctrl + c twice to save and exit \n \nContents: ");
 
                     EnterWriteLoop(_fileService, filePath, ui);
 

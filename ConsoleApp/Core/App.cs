@@ -15,7 +15,7 @@ namespace ConsoleApp.Core
             Run();
         }
 
-        public void Run()
+        private void Run()
         {
             CommandManager _commandManager = new(_ui);
 
@@ -40,11 +40,10 @@ namespace ConsoleApp.Core
                     try
                     {
                         _commandManager.TryExecute(_input);
-                        _ui.ResetCancelling();
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(ex.Message);
+                        _ui.Write(ex.Message);
                     }
                 }
                 else
