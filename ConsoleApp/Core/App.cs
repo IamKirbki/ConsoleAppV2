@@ -33,7 +33,14 @@ namespace ConsoleApp.Core
                 input = input.Trim();
                 if (input != EXIT_COMMAND)
                 {
-                    _commandManager.TryExecute(input);
+                    try
+                    {
+                        _commandManager.TryExecute(input);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(ex.Message);
+                    }
                 }
                 else
                 {

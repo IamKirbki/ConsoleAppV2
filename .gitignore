@@ -439,5 +439,6 @@ FodyWeavers.xsd
 
 # Built Visual Studio Code Extensions
 *.vsix
+
 ConsoleApp/bin/*
 ConsoleApp/obj/*
