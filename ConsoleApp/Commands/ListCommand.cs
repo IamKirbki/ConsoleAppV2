@@ -36,8 +36,6 @@ namespace ConsoleApp.Commands
                         Pokemon SelectedPokemon = Pokelist.Pokemons[index];
                         Dictionary<string, string> PokemonProperties = SelectedPokemon.GetValues();
 
-                        _ui.Clear();
-
                         foreach (KeyValuePair<string, string> entry in PokemonProperties)
                         {
                             _ui.Write(entry.Key + ": " + entry.Value);
