@@ -1,10 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "VX2NMZUwGlKHEKieZ6TWzKjPw9GQtD3rg78gs+8rHX5QCYIJQlmNf7ayre22o9SJR2BHhWx1YFrbT2tFZvskWQ==",
+  "dgSpecHash": "Iu3Kj/1T3BI=",
   "success": true,
   "projectFilePath": "/mnt/shared/ConsoleApp/ConsoleApp/ConsoleApp.csproj",
   "expectedPackageFiles": [
-    "/home/Kirbki/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.20/microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512"
+    "/home/Kirbki/.nuget/packages/microsoft.netcore.app.ref/8.0.20/microsoft.netcore.app.ref.8.0.20.nupkg.sha512",
+    "/home/Kirbki/.nuget/packages/microsoft.aspnetcore.app.ref/8.0.20/microsoft.aspnetcore.app.ref.8.0.20.nupkg.sha512",
+    "/home/Kirbki/.nuget/packages/microsoft.netcore.app.host.linux-x64/8.0.20/microsoft.netcore.app.host.linux-x64.8.0.20.nupkg.sha512"
   ],
   "logs": []
 }

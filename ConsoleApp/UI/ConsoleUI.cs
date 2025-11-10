@@ -1,11 +1,4 @@
-﻿using ConsoleApp.data;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace ConsoleApp.UI
+﻿namespace ConsoleApp.UI
 {
     public class ConsoleUI
     {
