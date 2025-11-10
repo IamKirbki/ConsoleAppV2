@@ -10,12 +10,7 @@ namespace ConsoleApp.Commands
         public void Execute(ConsoleUI _ui)
         {
             _ui.Clear();
-            _ui.Write("The current date in dd-mm-yyyy format is: ");
-            _ui.Write(DateTime.Now.ToString("dd-MM-yyyy"));
-
-            _ui.Write("");
-            _ui.Write("Enter anything to exit");
-            _ui.Read();
+            _ui.Write("The current date in dd-mm-yyyy format is: " + DateTime.Now.ToString("dd-MM-yyyy"));
         }
     }
 }

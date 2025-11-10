@@ -6,24 +6,31 @@ namespace ConsoleApp.Services
     {
         public void Create(string path)
         {
-            using (StreamWriter w = File.AppendText(path));
+            File.AppendText(path);
         }
 
         public void Delete(string path)
         {
-            if(Exists(path))
+            if (Exists(path))
                 File.Delete(path);
+            else
+                throw new FileNotFoundException("File not found", path);
         }
 
         public string Read(string path)
         {
-            return File.ReadAllText(path);
+            if (Exists(path))
+                return File.ReadAllText(path);
+            else
+                throw new FileNotFoundException("File not found", path);
         }
 
         public void Write(string path, string content)
         {
-            if(Exists(path))
+            if (Exists(path))
                 File.WriteAllText(path, content);
+            else 
+                throw new FileNotFoundException("File not found", path);
         }
 
         public bool Exists(string path)

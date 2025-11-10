@@ -55,10 +55,6 @@ namespace ConsoleApp.Commands
                     _ui.Write("Please select a number");
                 }
             }
-
-            _ui.Write("");
-            _ui.Write("Enter anything to exit");
-            _ui.Read();
         }
     }
 }

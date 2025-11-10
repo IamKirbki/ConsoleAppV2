@@ -37,10 +37,7 @@ namespace ConsoleApp.Commands
                     if (_fileService.Exists(FilePath))
                     {
                         _ui.Clear();
-                        _ui.Write("File '" + FileName + "' created succesfully");
-                        _ui.Write("Press ctrl + c twice to save and exit");
-                        _ui.Write("");
-                        _ui.Write("Contents: ");
+                        _ui.Write("File '" + FileName + "' created succesfully\ \n Press ctrl + c twice to save and exit \n \n Contents: ");
 
                         bool isWriting = true;
                         _ui.SetupCancelling();

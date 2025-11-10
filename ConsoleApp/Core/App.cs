@@ -18,27 +18,24 @@ namespace ConsoleApp.Core
         {
             CommandManager _commandManager = new(_ui);
 
-            ListCommand _list = new();
-            HelpCommand _help = new();
-            CreateFileCommand _file = new();
-            ReverseCommand _reverse = new();
-            DateCommand _date = new();
-
-            _commandManager.RegisterCommand(_list);
-            _commandManager.RegisterCommand(_help);
-            _commandManager.RegisterCommand(_file);
-            _commandManager.RegisterCommand(_reverse);
-            _commandManager.RegisterCommand(_date);
+            _commandManager.RegisterCommand(new ListCommand());
+            _commandManager.RegisterCommand(new HelpCommand());
+            _commandManager.RegisterCommand(new CreateFileCommand());
+            _commandManager.RegisterCommand(new ReverseCommand());
+            _commandManager.RegisterCommand(new DateCommand());
+            _commandManager.RegisterCommand(new ClearCommand());
 
             bool isActive = true;
 
             while (isActive)
             {
-                string Input = _ui.Read();
-                if(Input != EXIT_COMMAND)
+                string input = _ui.Read();
+                input = input.Trim();
+                if (input != EXIT_COMMAND)
                 {
-                    _commandManager.TryExecute(Input);
-                } else
+                    _commandManager.TryExecute(input);
+                }
+                else
                 {
                     isActive = false;
                 }

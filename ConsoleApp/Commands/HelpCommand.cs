@@ -9,15 +9,13 @@ namespace ConsoleApp.Commands
 
         public void Execute(ConsoleUI _ui)
         {
-            _ui.Write("list: Show a list of pokemon");
-            _ui.Write("createFile: Create a .txt file");
-            _ui.Write("date: Get the current date in format: dd-mm-yyyy");
-            _ui.Write("reverse: Reverse an input string");
-            _ui.Write("help: This menu :D");
-
-            _ui.Write("");
-            _ui.Write("Enter anything to exit");
-            _ui.Read();
+            _ui.Write(
+                "list: Show a list of pokemon \n" +
+                "createFile: Create a .txt file \n" +
+                "date: Get the current date in format: dd-mm-yyyy \n" +
+                "reverse: Reverse an input string \n" +
+                "help: This menu :D \n" +
+            );
         }
     }
 }

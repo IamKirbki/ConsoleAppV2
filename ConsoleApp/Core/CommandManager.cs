@@ -23,11 +23,9 @@ namespace ConsoleApp.Core
             if (_commands.TryGetValue(input, out ICommand command))
             {
                 command.Execute(_ui);
-                _ui.Clear();
                 return true;
             }
 
-            _ui.Clear();
             _ui.Write("No such command, please write help for help");
             return false;
         }

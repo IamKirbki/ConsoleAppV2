@@ -7,7 +7,14 @@ namespace ConsoleApp
     {
         static void Main(string[] args)
         {
-            _ = new App(new ConsoleUI());
+            try
+            {
+                _ = new App(new ConsoleUI());
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("An unexpected error occurred: " + ex.Message);
+            }
         }
     }
 }

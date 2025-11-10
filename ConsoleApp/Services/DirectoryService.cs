@@ -29,8 +29,10 @@ namespace ConsoleApp.Services
         public void GoUp()
         {
             var parent = Directory.GetParent(CurrPath);
-            if(parent != null)
+            if (parent != null)
                 CurrPath = parent.FullName;
+            else
+                throw new Exception("No parent directory.");
         }
 
         public bool Exists(string path)

@@ -14,16 +14,10 @@ namespace ConsoleApp.Commands
             string str = _ui.Read();
             _ui.Write("Your string reversed is: ");
             _ui.Write(Reverse(str));
-
-            _ui.Write("");
-            _ui.Write("Enter anything to exit");
-            _ui.Read();
         }
         public static string Reverse(string s)
         {
-            char[] charArray = s.ToCharArray();
-            Array.Reverse(charArray);
-            return new string(charArray);
+            return new string(s.Reverse().ToArray());
         }
     }
 }

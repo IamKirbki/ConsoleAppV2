@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/mnt/shared/ConsoleApp/ConsoleApp/ConsoleApp.csproj",
+      "projectUniqueName": "/mnt/shared/ConsoleAppV2/ConsoleApp/ConsoleApp.csproj",
       "projectName": "ConsoleApp",
-      "projectPath": "/mnt/shared/ConsoleApp/ConsoleApp/ConsoleApp.csproj",
+      "projectPath": "/mnt/shared/ConsoleAppV2/ConsoleApp/ConsoleApp.csproj",
       "packagesPath": "/home/Kirbki/.nuget/packages/",
-      "outputPath": "/mnt/shared/ConsoleApp/ConsoleApp/obj/",
+      "outputPath": "/mnt/shared/ConsoleAppV2/ConsoleApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/Kirbki/.nuget/NuGet/NuGet.Config"
